@@ -12,7 +12,7 @@
       <div class="member-banner">
         <h2 class="title">{{ membersOption.TOC_MEMBER_TITLE }}</h2>
         <div class="founder">
-          <img class="photo" src="/assets/img/members/xiaoyu.png" alt="" />
+          <img class="photo" src="/assets/img/members/xiaoyu.png" alt="" onclick=''/>
           <div class="info">
             <div class="role">{{ membersOption.FOUNDER.role }}</div>
             <div class="name">{{ membersOption.FOUNDER.name }}</div>
@@ -96,7 +96,7 @@ let membersOption: MembersOption = reactive({
   TOC_MEMBER_TITLE: '',
   COMMITTEE_TITLE: '',
   COMMITTER_TITLE: '',
-  FOUNDER: { role: '', name: '', photo: '', desc: '' },
+  FOUNDER: { role: '', name: '', photo: '', desc: '', projects:[] },
   TOC_MEMBERS: [],
   COMMITTEES: [],
   COMMITTERS: []
