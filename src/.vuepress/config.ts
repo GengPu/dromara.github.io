@@ -133,6 +133,10 @@ export default defineUserConfig({
       __dirname,
       './components/MembersPage/MembersPage.vue'
     ),
+    '@MembersDetails': path.resolve(
+      __dirname,
+      './components/MembersPage/MembersDetails.vue'
+    ),
     '@theme-hope/components/PageFooter': path.resolve(
       __dirname,
       './components/PageFooter/PageFooter.vue'

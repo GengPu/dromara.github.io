@@ -62,7 +62,7 @@ watch(
 </script>
 
 <template>
-  <div class="member-details-page">
+  <main class="member-details-page">
       <div class="member-info">
         <div class='member-photo'>
           <img class="photo" :src="member.photo" alt="{{member.name}}" />
@@ -94,7 +94,7 @@ watch(
       </ul>
     </div>
 
-  </div>
+  </main>
 
 </template>
 

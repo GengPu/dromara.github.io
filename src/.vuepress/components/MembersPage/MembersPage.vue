@@ -8,11 +8,11 @@
         </p>
       </div>
     </div>
-    <main class="member-main">
+    <main class="member-main">x
       <div class="member-banner">
         <h2 class="title">{{ membersOption.TOC_MEMBER_TITLE }}</h2>
         <div class="founder">
-          <img class="photo" src="/assets/img/members/xiaoyu.png" alt="" onclick=''/>
+          <img class="photo" src="/assets/img/members/xiaoyu.png" @click='memberDetail(membersOption.FOUNDER)'/>
           <div class="info">
             <div class="role">{{ membersOption.FOUNDER.role }}</div>
             <div class="name">{{ membersOption.FOUNDER.name }}</div>
@@ -86,7 +86,7 @@
 <script setup lang="ts">
 import { useSiteLocaleData } from '@vuepress/client';
 import { type MembersOption, type Member } from './types';
-import { ref, reactive, watch, onMounted } from 'vue';
+import { ref, reactive, watch, onMounted , } from 'vue';
 import enMembersOption from './en';
 import zhMembersOption from './zh';
 
@@ -159,6 +159,11 @@ function memberMouseOut(e: MouseEvent) {
     e.target.style.zIndex = '';
     scaleMemberName(e.target, false);
   }
+}
+
+function memberDetail(e:Member) {
+  console.log(JSON.stringify(e));
+  this.$router.push({name:"MembersDetails", params:{e}});
 }
 </script>
 
