@@ -8,14 +8,15 @@
         </p>
       </div>
     </div>
-    <main class="member-main">x
+    <main class="member-main">
       <div class="member-banner">
         <h2 class="title">{{ membersOption.TOC_MEMBER_TITLE }}</h2>
         <div class="founder">
-          <img class="photo" src="/assets/img/members/xiaoyu.png" @click='memberDetail(membersOption.FOUNDER)'/>
+          <img class="photo" src="/assets/img/members/xiaoyu.png"/>
           <div class="info">
             <div class="role">{{ membersOption.FOUNDER.role }}</div>
-            <div class="name">{{ membersOption.FOUNDER.name }}</div>
+            <div class="name">
+              <RouterLink to="/members/MemberDetails">{{ membersOption.FOUNDER.name }}</RouterLink></div>
             <div class="desc">{{ membersOption.FOUNDER.desc }}</div>
           </div>
         </div>
@@ -27,7 +28,7 @@
             v-for="(member, index) in membersOption.TOC_MEMBERS"
             :key="index"
           >
-            <img class="photo" :src="member.photo" alt="" />
+            <img class="photo" :src="member.photo" />
             <div class="info">
               <div class="photo-overlay">
                 <div class="circle"></div>
@@ -84,11 +85,14 @@
 </template>
 
 <script setup lang="ts">
-import { useSiteLocaleData } from '@vuepress/client';
+import { defineClientConfig, useSiteLocaleData } from '@vuepress/client';
 import { type MembersOption, type Member } from './types';
 import { ref, reactive, watch, onMounted , } from 'vue';
 import enMembersOption from './en';
 import zhMembersOption from './zh';
+import MemberDetails from '../MemberDetails/MemberDetails.vue';
+
+
 
 let membersOption: MembersOption = reactive({
   MEMBERS: '',
@@ -163,7 +167,8 @@ function memberMouseOut(e: MouseEvent) {
 
 function memberDetail(e:Member) {
   console.log(JSON.stringify(e));
-  this.$router.push({name:"MembersDetails", params:{e}});
+  window.location.href = "/MembersDetails?name=123";
+    // .push({name:"MembersDetails", params:{e}});
 }
 </script>
 

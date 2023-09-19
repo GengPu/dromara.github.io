@@ -12,10 +12,10 @@
  *
  */
 import { useSiteLocaleData } from '@vuepress/client';
-import { type MembersOption, type Member, type ProjectInfo } from './types';
+import { type MembersOption, type Member, type ProjectInfo } from '../MembersPage/types';
 import { ref, reactive, watch, onMounted, defineComponent } from 'vue';
-import enMembersOption from './en';
-import zhMembersOption from './zh';
+import enMembersOption from '../MembersPage/en';
+import zhMembersOption from '../MembersPage/zh';
 
 let member = defineProps<Member>();
 
