@@ -11,7 +11,8 @@
     <main class="member-main">
       <div class="member-banner">
         <h2 class="title">{{ membersOption.TOC_MEMBER_TITLE }}</h2>
-        <div class="founder">
+
+        <div class="founder" @click='memberDetail(membersOption.FOUNDER)'>
           <img class="photo" src="/assets/img/members/xiaoyu.png" alt="" />
           <div class="info">
             <div class="name">{{ membersOption.FOUNDER.name }}</div>
@@ -35,7 +36,7 @@
                 />
                 <div class="slider"></div>
               </div>
-              <div class="info">
+              <div class="info" @click='memberDetail(member)'>
                 <div class="name">{{ member.name }}</div>
                 <div class="role">{{ member.role }}</div>
                 <div class="desc">{{ member.desc }}</div>
@@ -81,6 +82,15 @@ watch(
     immediate: true
   }
 );
+
+function memberDetail(e:Member) {
+  console.log(JSON.stringify(e));
+  let nameStr = encodeURI(e.name);
+  // 存
+  sessionStorage.setItem(e.name,JSON.stringify(e))
+  window.location.href = "/MemberDetails?name="+nameStr;
+
+}
 </script>
 
 <style scoped lang="scss">
