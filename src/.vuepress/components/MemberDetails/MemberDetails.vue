@@ -17,7 +17,7 @@ import { ref, reactive, watch, onMounted, defineComponent } from 'vue';
 import enMembersOption from '../MembersPage/en';
 import zhMembersOption from '../MembersPage/zh';
 
-let member = defineProps<Member>();
+// = defineProps<Member>();
 
 const siteLocaleData = useSiteLocaleData();
 const lang = ref(siteLocaleData.value.lang);
@@ -33,6 +33,14 @@ let membersOption: MembersOption = reactive({
   COMMITTEES: [],
   COMMITTERS: []
 });
+ let member: Member = { desc: '', name: '', photo: '', role: '' };
+// 取
+
+// 取出查询参数
+console.log(location.search.substring(1).split('=')[1]);
+let name = decodeURI(location.search.substring(1).split('=')[1]);
+let objectStr = sessionStorage.getItem(name)
+member = JSON.parse(objectStr);
 
 watch(
   // 图个省事，用图片路径作为索引进行筛选
@@ -99,5 +107,71 @@ watch(
 </template>
 
 <style scoped lang='scss'>
+
+// 信息总面板
+.member-details-page{
+  padding-top: var(--navbar-height);
+  min-width: 600px;
+  .bg-white {
+    background-color: #2354bd;
+  }
+}
+
+// 人员信息面板
+.member-info{
+  border-style:solid;
+	border-width:1px;
+  border-color: #bd3e2e;
+}
+// 图片
+.member-photo{
+  border-style:solid;
+	border-width:1px;
+  border-color: #2ebd81;
+}
+
+// 人员名称
+.member-name{
+  border-style:solid;
+	border-width:1px;
+  border-color: #1d34c3;
+}
+// 人员说明
+.member-desc{
+  border-style:solid;
+	border-width:1px;
+  border-color: #bc14e1;
+}
+// 人员寄语
+.member-sendWord{
+  border-style:solid;
+	border-width:1px;
+  border-color: #c89790;
+}
+// 人员所属项目面板
+.member-projects{
+
+}
+// 单项目基本信息面板
+.project-info{
+
+}
+// 成员的项目列表
+.project{}
+
+// 项目信息清单
+.info{}
+
+// 项目名称
+.project-name{}
+
+// 成员在项目中的角色
+.project-role{}
+
+// 成员在项目中的贡献
+.project-contribute{}
+
+// 成员在项目中获得的荣誉
+.project-honor{}
 
 </style>

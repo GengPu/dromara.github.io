@@ -11,12 +11,13 @@
     <main class="member-main">
       <div class="member-banner">
         <h2 class="title">{{ membersOption.TOC_MEMBER_TITLE }}</h2>
-        <div class="founder">
+
+        <div class="founder" >
           <img class="photo" src="/assets/img/members/xiaoyu.png"/>
           <div class="info">
             <div class="role">{{ membersOption.FOUNDER.role }}</div>
-            <div class="name">
-              <RouterLink to="/members/MemberDetails">{{ membersOption.FOUNDER.name }}</RouterLink></div>
+            <div class="name"  @click='memberDetail(membersOption.FOUNDER)' >
+              {{ membersOption.FOUNDER.name }}</div>
             <div class="desc">{{ membersOption.FOUNDER.desc }}</div>
           </div>
         </div>
@@ -34,7 +35,7 @@
                 <div class="circle"></div>
               </div>
               <div class="role">{{ member.role }}</div>
-              <div class="name">{{ member.name }}</div>
+              <div class="name" @click='memberDetail(member)'>{{ member.name }}</div>
               <div class="desc">{{ member.desc }}</div>
             </div>
           </li>
@@ -54,7 +55,7 @@
                 <div class="circle"></div>
               </div>
               <div class="role">{{ member.role }}</div>
-              <div class="name">{{ member.name }}</div>
+              <div class="name" @click='memberDetail(member)'>{{ member.name }}</div>
               <div class="desc">{{ member.desc }}</div>
             </div>
           </li>
@@ -90,7 +91,6 @@ import { type MembersOption, type Member } from './types';
 import { ref, reactive, watch, onMounted , } from 'vue';
 import enMembersOption from './en';
 import zhMembersOption from './zh';
-import MemberDetails from '../MemberDetails/MemberDetails.vue';
 
 
 
@@ -167,8 +167,11 @@ function memberMouseOut(e: MouseEvent) {
 
 function memberDetail(e:Member) {
   console.log(JSON.stringify(e));
-  window.location.href = "/MembersDetails?name=123";
-    // .push({name:"MembersDetails", params:{e}});
+  let nameStr = encodeURI(e.name);
+  // 存
+  sessionStorage.setItem(e.name,JSON.stringify(e))
+  window.location.href = "/MemberDetails?name="+nameStr;
+
 }
 </script>
 
